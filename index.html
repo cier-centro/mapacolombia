@@ -6,22 +6,20 @@
         <script src="jquery.js"></script>
         <script src="jquery-jvectormap-2.0.3.min.js"></script>
         <script src="jquery-jvectormap-co-mill.js"></script>
-        
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
         <script type="text/javascript">
             var markers = [
                 {latLng: [9.974099, -73.538492], name: 'a', index: 1},
                 {latLng: [4.005872, -71.775185], name: 'b', index: 2},
                 {latLng: [12.551124, -81.717518], name: 'c', index: 3},
             ];
-        </script>
-        
-    </head>
-    <body>
-        <div id="map" style="height: 400px"></div>
-        <script>
+            
             $(function() {
                 $('#map').vectorMap({
                     map: 'co_mill',
+                    zoomMax: 2,
                     markerStyle: {
                         initial: {
                             fill: '#FFFF00',
@@ -29,18 +27,88 @@
                             "fill-opacity": 1,
                             "stroke-width": 1,
                             "stroke-opacity": 1,
-                            r: 4
+                            r: 4,
+                            image: 'map-marker.png'
                         }
                     },
                     
                     markers: markers,
                     
-                    onMarkerClick: function(event, index){
-                        alert("event : "+event+" - index : "+index+" - weburl : "+markers[index].index);
-                    },
+                    backgroundColor: '#CAC4B0',
                     
+                    series: {
+                        regions: [{
+                            values: {
+                                "CO-VAC": '#FFFFFF',
+                                "CO-BOY": '#FFFFFF',
+                                "CO-COR": '#FFFFFF',
+                                "CO-HUI": '#FFFFFF',
+                                "CO-VAU": '#FFFFFF',
+                                "CO-NSA": '#FFFFFF',
+                                "CO-RIS": '#FFFFFF',
+                                "CO-VID": '#FFFFFF',
+                                "CO-BOL": '#FFFFFF',
+                                "CO-CUN": '#FFFFFF',
+                                "CO-GUV": '#FFFFFF',
+                                "CO-CAU": '#FFFFFF',
+                                "CO-CAS": '#FFFFFF',
+                                "CO-CAQ": '#FFFFFF',
+                                "CO-CES": '#FFFFFF',
+                                "CO-SAN": '#FFFFFF',
+                                "CO-ATL": '#FFFFFF',
+                                "CO-AMA": '#FFFFFF',
+                                "CO-MET": '#FFFFFF',
+                                "CO-MAG": '#FFFFFF',
+                                "CO-ARA": '#FFFFFF',
+                                "CO-GUA": '#FFFFFF',
+                                "CO-SAP": '#FFFFFF',
+                                "CO-CAL": '#FFFFFF',
+                                "CO-QUI": '#FFFFFF',
+                                "CO-LAG": '#FFFFFF',
+                                "CO-TOL": '#FFFFFF',
+                                "CO-SUC": '#FFFFFF',
+                                "CO-PUT": '#FFFFFF',
+                                "CO-NAR": '#FFFFFF',
+                                "CO-CHO": '#FFFFFF',
+                                "CO-DC": '#FFFFFF',
+                                "CO-ANT": '#FFFFFF',
+                            },
+                         }],
+                     },
+                    
+                    onMarkerClick: function(event, index) {
+                        //alert("event : " + event + " - index : " + index + " - weburl : " + markers[index].index);
+                        $('#myModal').modal('show');
+                    },
                 });
             });
+
         </script>
+
+    </head>
+    <body>
+        <div id="map" style="height: 800px"></div>
+
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modal Header</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Some text in the modal.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
     </body>
 </html>
